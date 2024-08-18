@@ -1,4 +1,5 @@
 ---
+import BlogPost from "../components/blog-post.astro"
 import BaseLayout from "./base-layout.astro"
 
 interface Props {
@@ -21,7 +22,7 @@ const { title, author, description, pubDate, tags } = frontmatter
   <date value={pubDate}>{new Date(pubDate).toDateString()}</date>s
   <h4>Теги:</h4>
   <ul>
-    {tags.map((tag) => <li>{tag}</li>)}
+    {tags.map((tag) => <BlogPost url=`tags/${tag}` title={tag} />)}
   </ul>
 
   <hr />
