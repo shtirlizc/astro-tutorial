@@ -1,0 +1,30 @@
+---
+import BaseLayout from "./base-layout.astro"
+
+interface Props {
+  frontmatter: {
+    title: string
+    author: string
+    description: string
+    pubDate: string
+    tags: string[]
+  }
+}
+
+const { frontmatter } = Astro.props
+const { title, author, description, pubDate, tags } = frontmatter
+---
+
+<BaseLayout pageTitle={title}>
+  <p>Written by {author}</p>
+  <p>{description}</p>
+  <date value={pubDate}>{new Date(pubDate).toDateString()}</date>s
+  <h4>Теги:</h4>
+  <ul>
+    {tags.map((tag) => <li>{tag}</li>)}
+  </ul>
+
+  <hr />
+
+  <slot />
+</BaseLayout>
