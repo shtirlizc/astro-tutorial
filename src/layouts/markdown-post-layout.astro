@@ -3,17 +3,7 @@ import TagsNavigation from "../components/tags-navigation.astro"
 import BaseLayout from "./base-layout.astro"
 
 interface Props {
-  frontmatter: {
-    title: string
-    author: string
-    image: {
-      url: string
-      alt: string
-    }
-    description: string
-    pubDate: string
-    tags: string[]
-  }
+  frontmatter: any
 }
 
 const { frontmatter } = Astro.props
