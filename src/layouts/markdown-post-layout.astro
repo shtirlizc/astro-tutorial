@@ -1,11 +1,15 @@
 ---
-import BlogPost from "../components/blog-post.astro"
+import TagsNavigation from "../components/tags-navigation.astro"
 import BaseLayout from "./base-layout.astro"
 
 interface Props {
   frontmatter: {
     title: string
     author: string
+    image: {
+      url: string
+      alt: string
+    }
     description: string
     pubDate: string
     tags: string[]
@@ -13,17 +17,19 @@ interface Props {
 }
 
 const { frontmatter } = Astro.props
-const { title, author, description, pubDate, tags } = frontmatter
+const { title, author, image, description, pubDate, tags } = frontmatter
 ---
 
 <BaseLayout pageTitle={title}>
   <p>Written by {author}</p>
-  <p>{description}</p>
+  <p><em>{description}</em></p>
+  <div>
+    <img src={image.url} width="100%" alt={image.alt} />
+  </div>
   <date value={pubDate}>{new Date(pubDate).toDateString()}</date>s
   <h4>Теги:</h4>
-  <ul>
-    {tags.map((tag) => <BlogPost url=`tags/${tag}` title={tag} />)}
-  </ul>
+
+  <TagsNavigation tags={tags} />
 
   <hr />
 
