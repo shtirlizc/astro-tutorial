@@ -21,7 +21,7 @@ const { title, author, image, description, pubDate, tags } = frontmatter
 ---
 
 <BaseLayout pageTitle={title}>
-  <p>Written by {author}</p>
+  <p>Written by <a href="/about/">{author}</a></p>
   <p><em>{description}</em></p>
   <div>
     <img src={image.url} width="100%" alt={image.alt} />
